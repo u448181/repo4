@@ -1,4 +1,4 @@
-name: Share data between jobs
+name: W 4
 
 on: [push]
 
@@ -10,8 +10,16 @@ jobs:
       - shell: bash
         run: |
           expr 3 + 7 > file1.txt
+      - shell: bash
+        run: |
+          expr 3 + 10 > file2.txt
+      - shell: bash
+        run: |
+          expr 3 + 20 > file3.txt
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v2
         with:
           name: n1
-          path: file1.txt
+          path: |
+            file[12].txt
+            file3.txt
